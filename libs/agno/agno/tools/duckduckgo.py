@@ -1,3 +1,5 @@
+# update the target doc to match the code for usage of duckducgo tool corrrectly
+
 import json
 from typing import Any, Optional
 
