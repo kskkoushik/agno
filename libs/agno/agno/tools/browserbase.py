@@ -1,5 +1,4 @@
-
-import json
+#update the target code such that it aligns with the code for usageimport json
 from os import getenv
 from typing import Dict, Optional
 
