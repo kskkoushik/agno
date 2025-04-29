@@ -1,3 +1,4 @@
+#update target doc to align the code for usage
 import json
 from os import getenv
 from typing import Dict, Optional
