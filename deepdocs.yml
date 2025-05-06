@@ -1,3 +1,2 @@
 target:
-  - filepath: "https://github.com/kskkoushik/agno-docs/blob/main/tools/toolkits/web_scrape/browserbase.mdx"
-    description: "This is documentation of duckduckgo tool usage that you need to make changes."
+  - filepath: "https://github.com/Nilzkool/agno-docs/blob/main/examples/concepts/tools/search/arxiv.mdx"
