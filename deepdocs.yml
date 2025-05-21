@@ -1,2 +1,2 @@
-target:
-  - filepath: "https://github.com/Nilzkool/agno-docs/blob/main/examples/concepts/tools/search/arxiv.mdx"
+target_repo:
+  - url: "https://github.com/Nilzkool/agno-docs"
