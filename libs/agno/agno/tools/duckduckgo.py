@@ -1,6 +1,5 @@
 import json
 from typing import Any, Optional
-
 from agno.tools import Toolkit
 from agno.utils.log import log_debug
 
@@ -58,18 +57,19 @@ class DuckDuckGoTools(Toolkit):
     def search_duckduckgo(self, keyword: str, limit: int = 5) -> str:
         """
         Performs a web search using DuckDuckGo.
-
+    
         Args:
             keyword (str): The search keyword or phrase.
             limit (int): Maximum number of results to return. Defaults to 5.
-
+    
         Returns:
             str: A JSON-formatted string of the search results.
         """
-        total = self.max_output or limit
-        full_query = f"{self.request_modifier} {keyword}" if self.request_modifier else keyword
-
-        log_debug(f"Initiating DuckDuckGo search: {full_query}")
+        max_results = self.max_output if self.max_output else limit
+        query = f"{self.request_modifier} {keyword}" if self.request_modifier else keyword
+    
+        log_debug(f"Initiating DuckDuckGo search: {query}")
+    
         client = DDGS(
             headers=self.request_headers,
             proxy=self.single_proxy,
@@ -77,8 +77,10 @@ class DuckDuckGoTools(Toolkit):
             timeout=self.request_timeout,
             verify=self.ssl_check
         )
+    
+        results = client.text(keywords=query, max_results=max_results)
+        return json.dumps(results, indent=2)
 
-        return json.dumps(client.text(keywords=full_query, max_results=total), indent=2)
 
     def fetch_duckduckgo_news(self, topic: str, limit: int = 5) -> str:
         """
