@@ -85,7 +85,7 @@ def validate_email(email: str) -> bool:
     return bool(re.match(pattern, email))
 
 
-class GmailTools(Toolkit):
+class GmailToolsKit(Toolkit):
     # Default scopes for Gmail API access
     DEFAULT_SCOPES = [
         "https://www.googleapis.com/auth/gmail.readonly",
@@ -95,7 +95,7 @@ class GmailTools(Toolkit):
 
     def __init__(
         self,
-        get_latest_emails: bool = True,
+        get_newest_emails: bool = True,
         get_emails_from_user: bool = True,
         get_unread_emails: bool = True,
         get_starred_emails: bool = True,
@@ -115,7 +115,7 @@ class GmailTools(Toolkit):
         """Initialize GmailTools and authenticate with Gmail API
 
         Args:
-            get_latest_emails (bool): Enable getting latest emails. Defaults to True.
+            get_newest_emails (bool): Enable getting latest emails. Defaults to True.
             get_emails_from_user (bool): Enable getting emails from specific user. Defaults to True.
             get_unread_emails (bool): Enable getting unread emails. Defaults to True.
             get_starred_emails (bool): Enable getting starred emails. Defaults to True.
@@ -145,7 +145,7 @@ class GmailTools(Toolkit):
             )
 
         read_operations = [
-            get_latest_emails,
+            get_newest_emails,
             get_emails_from_user,
             get_unread_emails,
             get_starred_emails,
@@ -161,8 +161,8 @@ class GmailTools(Toolkit):
             if read_scope not in self.scopes and write_scope not in self.scopes:
                 raise ValueError(f"The scope {read_scope} is required for email reading operations")
 
-        if get_latest_emails:
-            self.register(self.get_latest_emails)
+        if get_newest_emails:
+            self.register(self.get_newest_emails)
         if get_emails_from_user:
             self.register(self.get_emails_from_user)
         if get_unread_emails:
